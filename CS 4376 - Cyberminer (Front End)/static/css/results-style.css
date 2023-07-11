@@ -1,0 +1,77 @@
+* {
+    font-family: 'Cabin';
+    background-color: #1B222D;
+    color:white;
+}
+
+hr {
+    border: 1px solid #303640;
+}
+  
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    color: white;
+    text-align: left;
+}
+
+h2 {
+    color: #F9EF5A;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+}
+  
+.logo {
+    width: 75px;
+    margin-right: 20px;
+}
+
+#search-input {
+    background: transparent;
+    color:white;
+    outline: none;
+    border: none;
+    width: 800px;
+    padding: 10px;
+    font-size: 25px;
+}
+  
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50px;
+    border-left: 3px #F9EF5A solid;
+    border-top: 3px #F9EF5A solid;
+    border-right: 3px #F9EF5A solid;
+    border-bottom: 3px #F9EF5A solid;
+}  
+
+.search-icon {
+    padding: 5px;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.fa-github {
+    font-size: 50px;
+    color: white;
+    padding: 5px;
+    left: 10px;
+}

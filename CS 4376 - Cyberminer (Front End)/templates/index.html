@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index-style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <title>CyberMiner - Search Engine</title>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="static/images/cyberminer-logo.svg" alt="CyberMiner Logo">
+    <div class="search-wrapper">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Mine the Internet">
+            <img class="search-icon" src="static/images/search-icon.svg" alt="Search Button" onclick="executeSearch()">
+        <div class="settings">
+            <i class="fa fa-gear" onclick="settingsMenu()"></i>
+            <div id="settings-dropdown" class="settings-content">
+                <p>Boolean Search</p>
+                <form action="/action_page.php" method="get">
+                    <div class="search-mode">
+                        <input type="radio" id="mode-or" name="search-mode" value="OR" class="radio-input">
+                        <label for="mode-or" class="radio-label">OR</label>
+                        <input type="radio" id="mode-and" name="search-mode" value="AND" class="radio-input">
+                        <label for="mode-and" class="radio-label">AND</label>
+                        <input type="radio" id="mode-not" name="search-mode" value="NOT" class="radio-input">
+                        <label for="mode-not" class="radio-label">NOT</label>
+                    </div>
+                    <div class="num-results">
+                        <label for="result-count" class="radio-label"># of Results per Page:</label>
+                        <input type="number" id="result-count" name="result-count" min="1" max="50" value="10" class="radio-input">
+                        <input type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+  </div>
+<footer>
+    <a href="https://github.com/CS4376/Cybermining"><i class="fa-brands fa-github"></i></a>
+</footer>
+</body>
+</html>

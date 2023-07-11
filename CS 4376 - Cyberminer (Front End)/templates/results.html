@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/results-style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+  <title>CyberMiner - Search Engine</title>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="/"><img class="logo" src="static/images/pickaxe.svg" alt="Cyberminer Logo"></a>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Mine the Internet">
+      <img class="search-icon" src="static/images/search-icon.svg" alt="Search Button" onclick="executeSearch()">
+    </div>
+  </div>
+  <hr>
+  <div id="search-results" class="results-container"></div>
+  <script src="script.js"></script>
+</body>
+<footer>
+  <a href="https://github.com/CS4376/Cybermining"><i class="fab fa-github"></i></a>
+</footer>
+</html>
