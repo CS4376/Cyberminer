@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <div id="results">
+        <!-- The search results will be dynamically populated here using JavaScript -->
+    </div>
+
+    <!-- Pagination controls -->
+    <div id="pagination"></div>
+
+    <script>
+        const resultsPerPage = Number(localStorage.getItem('resultsPerPage') || '10'); // Default to 10 if not set
+ // Change this to set the number of results per page
+    
+        // Function to load results for a given page
+        function loadResults(results, page) {
+            const resultsDiv = document.getElementById('results');
+    
+            // Calculate the start and end indices for the results of this page
+            const start = (page - 1) * resultsPerPage;
+            const end = start + resultsPerPage;
+    
+            // Get the results for this page
+            const pageResults = results.slice(start, end);
+    
+            // Clear the results div
+            resultsDiv.innerHTML = '';
+    
+            // Display the keyword at the top
+            if (pageResults.length > 0) {
+                resultsDiv.innerHTML += `<h2>Keyword: ${pageResults[0].keyword}</h2>`;
+            }
+    
+            // Counter variable to number the results
+            let counter = start + 1;
+    
+            pageResults.forEach(result => {
+                // Render the result number and details
+                resultsDiv.innerHTML += `<h3>Result ${counter}</h3>
+                <div>
+                    <p>Title: ${result.title}</p>
+                    <p>URL: <a href="${result.url}" target="_blank">${result.url}</a></p>
+                    <p>Last Published Date: ${result.last_published_date}</p>
+                </div>`;
+    
+                // Increment the counter for the next result
+                counter++;
+            });
+        }
+    
+        // Code to load results on the results.html page
+        if (window.location.pathname.endsWith('/results')) {
+            // Get the results and current page from local storage
+            const results = JSON.parse(localStorage.getItem('searchResults') || '[]');
+            const currentPage = Number(localStorage.getItem('currentPage') || '1');
+    
+            loadResults(results, currentPage); // Load results for the current page
+    
+            // Render pagination controls
+            const totalPages = Math.ceil(results.length / resultsPerPage);
+            const paginationDiv = document.getElementById('pagination');
+            for (let page = 1; page <= totalPages; page++) {
+                const pageLink = document.createElement('a');
+                pageLink.textContent = page;
+                pageLink.href = '#';
+                pageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.setItem('currentPage', String(page)); // Update the current page in local storage
+                    loadResults(results, page); // Load results for the clicked page
+                });
+                paginationDiv.appendChild(pageLink);
+            }
+        }
+    </script>
+</body>
+</html>

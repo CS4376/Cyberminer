@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Page</title>
+</head>
+<body>
+    <h1>Search Page</h1>
+    <form id="search-form">
+        <label for="keyword">Enter Keyword:</label>
+        <label for="min_year">Minimum Year:</label>
+        <input type="number" id="min_year" min="1990">
+        <label for="results_per_page">Results per page:</label>
+        <input type="number" id="results_per_page" min="1" max="30" value="10">
+        <input type="text" id="keyword" required>
+        <label for="per_page">Total number of results (Max 30):</label>
+        <input type="number" id="per_page">
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+            <option value="asc">Ascending Alphabetical Order</option>
+            <option value="dsc">Descending Alphabetical Order</option>
+            <option value="freq">Most Frequently Accessed</option>
+            <option value="payment">Payment</option>
+        </select>
+        <label for="expiry_date">Expiry Date:</label>
+        <input type="date" id="expiry_date">
+        <label for="all_results">Include past results?</label>
+        <input type="checkbox" id="all_results">
+        <button type="submit">Search</button>
+    </form>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
