@@ -1,0 +1,129 @@
+* {
+    font-family: 'Cabin';
+}
+
+body {
+    background: url(/static/images/cyberminer-bg.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+input[type=text] {
+    background: transparent;
+    color:white;
+    outline: none;
+    border: none;
+    width: 800px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    color: white;
+    text-align: left;
+}
+
+.container {
+    margin: 250px auto;
+    max-width: 1000px;
+    max-height: fit-content;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 750px;
+    margin-bottom: 20px;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    width: 900px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50px;
+    border-left: 3px #F9EF5A solid;
+    border-top: 3px #F9EF5A solid;
+    border-right: 3px #F9EF5A solid;
+    border-bottom: 3px #F9EF5A solid;
+}  
+
+.search-icon {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Dropdown Button */
+.fa-gear {
+    background-color: transparent;
+    color: #F9EF5A;
+    padding: 16px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+  
+/* Dropdown button on hover & focus */
+.fa-gear:hover, .fa-gear:focus {
+    color: #88A6F3;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+  
+/* The container <div> - needed to position the dropdown content */
+.settings {
+    margin: 0;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.settings-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.settings-content p {
+    font-weight: bold;
+}
+
+.settings-content .search-mode {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Adjust margin for spacing between radio labels */
+.radio-label {
+    margin: 0 auto;
+}
+
+.fa-github {
+    font-size: 50px;
+    color: white;
+    padding: 5px;
+    left: 10px;
+}
+
+/* Show the dropdown menu */
+.show {
+    display: block;
+}

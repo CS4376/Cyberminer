@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index-style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <title>CyberMiner - Search Engine</title>
+</head>
+<body>
+    <body>
+        <div class="container">
+            <img class="logo" src="/static/images/cyberminer-logo.svg" alt="CyberMiner Logo">
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <input type="text" id="keyword" placeholder="Mine the Internet">
+                    <img class="search-icon" src="static/images/search-icon.svg" alt="Search Button" onclick="executeSearch()">
+                </div>
+                <div class="settings">
+                      <i class="fa fa-gear" onclick="toggleSettingsDropdown()"></i>
+                      <div id="settings-dropdown" class="settings-content">
+                         <p>Boolean Search</p>
+                            <div class="search-mode">
+                                <input type="radio" id="mode-or" name="search-mode" value="OR" class="radio-input">
+                                <label for="mode-or" class="radio-label">OR</label>
+                                <input type="radio" id="mode-and" name="search-mode" value="AND" class="radio-input">
+                                <label for="mode-and" class="radio-label">AND</label>
+                                <input type="radio" id="mode-not" name="search-mode" value="NOT" class="radio-input">
+                                <label for="mode-not" class="radio-label">NOT</label>
+                            </div>
+                            <div class="num-results">
+                                <label for="results_per_page" class="radio-label"># of Results per Page:</label>
+                                <input type="number" id="results_per_page" min="1" max="30" value="10">
+                            </div>
+                            <div class="min-year">
+                                <label for="min_year">Minimum Year:</label>
+                                <input type="number" id="min_year" min="1990">
+                            </div>
+                            <div class="case-sort">
+                                <label for="case">Case Sensitive Search:</label>
+                                <select id="case">
+                                    <option value="fa">False</option>
+                                    <option value="tr">True</option>
+                                </select>
+                            </div>
+                            <div class="sort-by">
+                                <label for="sort">Sort by:</label>
+                                <select id="sort">
+                                    <option value="asc">Ascending Alphabetical Order</option>
+                                    <option value="dsc">Descending Alphabetical Order</option>
+                                    <option value="freq">Most Frequently Accessed</option>
+                                    <option value="payment">Payment</option>
+                                </select>                                
+                            </div>
+                            <div class="expiry-results">
+                                <label for="expiry_date">Expiry Date:</label>
+                                <input type="date" id="expiry_date">
+                            </div>
+                            <div class="all-results">
+                                <label for="all_results">Include past results?</label>
+                                <input type="checkbox" id="all_results">
+                            </div>
+                            <button type="button" onclick="saveSettings()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <footer>
+          <a href="https://github.com/CS4376/Cybermining"><i class="fa-brands fa-github"></i></a>
+      </footer>
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>

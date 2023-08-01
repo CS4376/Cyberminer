@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/results-style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+  <title>CyberMiner - Search Engine</title>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="/"><img class="logo" src="static/images/pickaxe.svg" alt="Cyberminer Logo"></a>
+            <div class="search-bar">
+                <input type="text" id="keyword" placeholder="Mine the Internet">
+                <img class="search-icon" src="static/images/search-icon.svg" alt="Search Button" onclick="executeSearch()">
+            </div>
+    </div>
+    <hr>
+    <h1>Search Results</h1>
+    <div id="results" class="results-container"></div>
+        <!-- The search results will be dynamically populated here using JavaScript -->
+    </div>
+
+    <!-- Pagination controls -->
+    <div id="pagination"></div>
+    <script>
+        // Function to display search results on the results page
+        function displaySearchResults(results) {
+          console.log("Received results:", results);
+      
+          const resultsDiv = document.getElementById("results");
+      
+          // Check if the element with the ID "results" exists
+          if (!resultsDiv) {
+            console.error("Element with ID 'results' not found.");
+            return;
+          }
+          resultsDiv.innerHTML = ""; // Clear existing results before adding new ones
+      
+          // Display the keyword at the top
+          if (results.length > 0) {
+            resultsDiv.innerHTML += `<h2>Keyword: ${results[0].keyword}</h2>`;
+          }
+      
+          results.forEach((result) => {
+            resultsDiv.innerHTML += `
+              <div>
+                <h3><a href="${result.url}" target="_blank">${result.url}</a></h3>
+                <p>Timestamp: ${result.timestamp}</p>
+                <p>Last Published Date: ${result.last_published_date}</p>
+              </div>`;
+          });
+        }
+    </script>
+    <script>
+        // Code to load results on the results.html page
+        if (window.location.pathname.endsWith('/results')) {
+          // Retrieve the search data from localStorage
+          const searchData = JSON.parse(localStorage.getItem('searchData'));
+      
+          console.log(searchData);
+      
+          // Check if the 'fromSearch' parameter is present in the URL
+          const urlParams = new URLSearchParams(window.location.search);
+          const fromSearch = urlParams.get('fromSearch');
+      
+          if (fromSearch === 'true' && searchData) {
+            // Execute the search with the retrieved data
+            fetchSearchResults(searchData);
+          }
+      
+          // Function to load results for the current page
+          function loadResults(results, currentPage) {
+            const startIndex = (currentPage - 1) * resultsPerPage;
+            const endIndex = startIndex + resultsPerPage;
+            const currentPageResults = results.slice(startIndex, endIndex);
+            displaySearchResults(currentPageResults);
+          }
+      
+          // Retrieve the results and current page from local storage
+          const results = JSON.parse(localStorage.getItem('searchResults') || '[]');
+          let currentPage = Number(localStorage.getItem('currentPage') || '1');
+      
+          // Render pagination controls
+          const totalPages = Math.ceil(results.length / resultsPerPage);
+          const paginationDiv = document.getElementById('pagination');
+          for (let page = 1; page <= totalPages; page++) {
+            const pageLink = document.createElement('a');
+            pageLink.textContent = page;
+            pageLink.href = '#';
+            pageLink.addEventListener('click', (e) => {
+              e.preventDefault();
+              const clickedPage = Number(e.target.textContent);
+              if (clickedPage !== currentPage) {
+                currentPage = clickedPage;
+                localStorage.setItem('currentPage', String(currentPage)); // Update the current page in local storage
+                loadResults(results, currentPage); // Load results for the clicked page
+              }
+            });
+            paginationDiv.appendChild(pageLink);
+          }
+      
+          // Load results for the initial current page
+          loadResults(results, currentPage);
+      
+          // Add an event listener to prevent form submission on the "Submit" button
+          const submitButton = document.querySelector("form input[type='submit']");
+          submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
+          });
+        }
+      </script>      
+</body>
+</html>
