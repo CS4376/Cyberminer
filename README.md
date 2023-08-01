@@ -1,4 +1,6 @@
-# Summer Searchers / Cyberminer
+![cyberminer-logo](https://github.com/CS4376/Cyberminer/assets/93101774/d9af6cf0-6b6a-4e60-b9a7-bb147e756494)
+# Summer Searchers
+ / Cyberminer
 Important Dates:
 - June 1st: Preliminary Project Plan
 - June 15th: Interim Project Phase I
